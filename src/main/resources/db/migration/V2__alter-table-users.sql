@@ -1,0 +1,4 @@
+ALTER TABLE users
+  ADD email VARCHAR(100) NOT NULL UNIQUE,
+  ADD status_account BOOLEAN NOT NULL DEFAULT true,
+  ADD profile VARCHAR(100) NOT NULL;

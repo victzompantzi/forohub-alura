@@ -1,6 +1,8 @@
 package com.example.alura.forohub.domain.user;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,6 +30,34 @@ public class User implements UserDetails {
   private Long id;
   private String username;
   private String password;
+  private String email;
+  private Boolean statusAccount;
+  @Enumerated(EnumType.STRING)
+  private Profiles profile;
+
+  public User(UserRegistrationData userRegistrationData) {
+    this.username = userRegistrationData.username();
+    this.password = userRegistrationData.password();
+    this.email = userRegistrationData.email();
+    this.statusAccount = true;
+    this.profile = userRegistrationData.profile();
+  }
+
+  public void updateData(UserUpdateData userUpdateData) {
+    if (userUpdateData.password() != null) {
+      this.password = userUpdateData.password();
+    }
+    if (userUpdateData.email() != null) {
+      this.email = userUpdateData.email();
+    }
+    if (userUpdateData.profile() != null) {
+      this.profile = userUpdateData.profile();
+    }
+  }
+
+  public void deactivateUser() {
+    this.statusAccount = false;
+  }
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
