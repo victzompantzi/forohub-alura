@@ -18,7 +18,7 @@ public class SecurityFilter extends OncePerRequestFilter {
   private TokenService tokenService;
 
   @Autowired
-  private UserRepository usuarioRepository;
+  private UserRepository userRepository;
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
@@ -28,7 +28,7 @@ public class SecurityFilter extends OncePerRequestFilter {
       if (authHeader != null) {
         var subject = tokenService.getSubject(authHeader);
         if (subject != null) {
-          var usuario = usuarioRepository.findByUsername(subject);
+          var usuario = userRepository.findByUsername(subject);
           if (usuario != null) {
             var authentication =
                 new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
