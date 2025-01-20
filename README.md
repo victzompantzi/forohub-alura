@@ -4,8 +4,8 @@ A forum platform with REST API architecture
 ## 💻 Sobre el proyecto
 
 Es una aplicación web con la arquitectura de API REST que implementa los foros
-para los cursos de una plataforma de cursos en línea, y en la cual, los usuarios
-puede registrarse, crear tópicos y responder a los creados por otros usuarios.
+para los cursos de una plataforma en línea, en la que los usuarios
+puede registrarse, crear tópicos y responder a otros usuarios.
 
 ---
 
